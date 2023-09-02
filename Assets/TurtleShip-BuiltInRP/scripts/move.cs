@@ -27,13 +27,13 @@ public class move : MonoBehaviour
         //    transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * 10.0f);
         //}
 
-        //// 현재 캐릭터의 회전값을 가져옴
-        //Quaternion currentRotation = transform.rotation;
+        // 현재 캐릭터의 회전값을 가져옴
+        Quaternion currentRotation = transform.rotation;
 
-        //// 북쪽을 나타내는 회전값을 계산
-        //Quaternion targetRotation = Quaternion.Euler(0, 0, 0); // (x, y, z) 각도를 지정
+        // 북쪽을 나타내는 회전값을 계산
+        Quaternion targetRotation = Quaternion.Euler(0, 0, 0); // (x, y, z) 각도를 지정
 
-        //// 회전값을 부드럽게 보간하여 업데이트
-        //transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, Time.deltaTime * 5.0f);
+        // 회전값을 부드럽게 보간하여 업데이트
+        transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, Time.deltaTime * 5.0f);
     }
 }
