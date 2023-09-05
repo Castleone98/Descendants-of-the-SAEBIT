@@ -28,11 +28,11 @@ public class PlayerController : MonoBehaviour
         otherCamera.enabled = isOtherCameraActive;
 
         // 캐릭터 위치 이동
-        if (isOtherCameraActive)
-        {
-            // 원하는 위치로 이동
-            transform.position = targetPosition.position;
-            transform.rotation = targetPosition.rotation;
-        }
+        //if (isOtherCameraActive)
+        //{
+        //    // 원하는 위치로 이동
+        //    transform.position = targetPosition.position;
+        //    transform.rotation = targetPosition.rotation;
+        //}
     }
 }
