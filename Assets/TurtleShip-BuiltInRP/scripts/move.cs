@@ -36,10 +36,27 @@ public class move : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveVec), 0.3f);
         }
 
-        moveVec.y -= gravity * Time.deltaTime;
+        //moveVec.y -= gravity * Time.deltaTime;
         //controller.Move(moveVec * speed * Time.deltaTime);
         transform.position += moveVec * speed * Time.deltaTime;
         controller.SimpleMove(moveVec * speed);
+
+        if (controller.isGrounded) // 캐릭터가 땅에 있을 때만 점프 가능
+        {
+            isJumping = false;
+
+            if (Input.GetButtonDown("Jump"))
+            {
+                moveVec.y = jumpForce;
+                isJumping = true;
+            }
+        }
+        else
+        {
+            // 중력 적용
+            moveVec.y -= gravity * Time.deltaTime;
+        }
+
     }
 
 
