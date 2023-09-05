@@ -9,8 +9,8 @@ public class move : MonoBehaviour
 
     public float hAxis;
     public float vAxis;
-    public float speed;
-    public float gravity;
+    public float speed = 5.0f;
+    public float gravity = 9.8f;
     Vector3 moveVec;
     Animator anim;
     CharacterController controller;
@@ -36,7 +36,7 @@ public class move : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveVec), 0.3f);
         }
 
-        //moveVec.y -= gravity;
+        moveVec.y -= gravity * Time.deltaTime;
         //controller.Move(moveVec * speed * Time.deltaTime);
         transform.position += moveVec * speed * Time.deltaTime;
         controller.SimpleMove(moveVec * speed);
