@@ -6,19 +6,24 @@ using UnityEngine;
 
 public class move : MonoBehaviour
 {
+    private Rigidbody rigid;
 
     public float hAxis;
     public float vAxis;
-    public float speed = 5.0f;
-    public float gravity = 9.8f;
+    private float speed = 5.0f;
+    private float jumpForce = 10.0f;
+    private float gravity = 9.8f;
     Vector3 moveVec;
     Animator anim;
     CharacterController controller;
+    private bool IsJumping = false;
 
     void Awake()
     {
         anim = GetComponentInChildren<Animator>();
         controller = GetComponent<CharacterController>();
+        rigid = GetComponent<Rigidbody>();
+        IsJumping = false;
     }
 
     void Update()
@@ -29,35 +34,73 @@ public class move : MonoBehaviour
         moveVec = moveVec.normalized;
 
         float planarSpeed = new Vector2(hAxis, vAxis).sqrMagnitude;
-        anim.SetFloat("PlanarSpeed", planarSpeed);
+        //anim.SetFloat("PlanarSpeed", planarSpeed);
 
         if (planarSpeed > 0)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveVec), 0.3f);
         }
 
-        //moveVec.y -= gravity * Time.deltaTime;
-        //controller.Move(moveVec * speed * Time.deltaTime);
-        transform.position += moveVec * speed * Time.deltaTime;
-        controller.SimpleMove(moveVec * speed);
+        moveVec.y -= gravity * Time.deltaTime;
+        controller.Move(moveVec * speed * Time.deltaTime);
+        //transform.position += moveVec * speed * Time.deltaTime;
+        //controller.SimpleMove(moveVec * speed);
 
-        if (controller.isGrounded) // 캐릭터가 땅에 있을 때만 점프 가능
+        //Jump();
+
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            isJumping = false;
-
-            if (Input.GetButtonDown("Jump"))
+            Debug.Log("Jump");
+            //바닥에 있으면 점프를 실행
+            if (!IsJumping)
             {
+                Debug.Log("Jump2");
+                //print("점프 가능 !");
+                //rigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                //moveVec.y = jumpForce;
                 moveVec.y = jumpForce;
-                isJumping = true;
+                Debug.Log(moveVec.y);
+                transform.position += moveVec * speed * Time.deltaTime;
+                moveVec.y = 0;
+
             }
-        }
-        else
-        {
-            // 중력 적용
-            moveVec.y -= gravity * Time.deltaTime;
+
+            //공중에 떠있는 상태이면 점프하지 못하도록 리턴
+            else
+            {
+                //print("점프 불가능 !");
+                return;
+            }
         }
 
     }
+
+
+    void Jump()
+    {
+        //스페이스 키를 누르면 점프
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Jump");
+            //바닥에 있으면 점프를 실행
+            if (!IsJumping)
+            {
+                Debug.Log("Jump2");
+                //print("점프 가능 !");
+                //rigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                moveVec.y = jumpForce;
+            }
+
+            //공중에 떠있는 상태이면 점프하지 못하도록 리턴
+            else
+            {
+                //print("점프 불가능 !");
+                return;
+            }
+        }
+    }
+
+  
 
 
     //public float moveSpeed = 5.0f;
