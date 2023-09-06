@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class cameramove : MonoBehaviour
 {
-    public Transform target;   // µû¶ó°¥ ´ë»ó (Ä³¸¯ÅÍÀÇ Transform)
+    public Transform target;   // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ (Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Transform)
 
-    public Vector3 offset = new Vector3(0.0f, 1.0f, 0.0f); // Ä«¸Þ¶ó¿Í Ä³¸¯ÅÍ »çÀÌÀÇ °Å¸® Á¶Àý
+    public Vector3 offset = new Vector3(0.0f, 1.0f, 0.0f); // Ä«ï¿½Þ¶ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-    public float smoothSpeed = 0.125f;  // Ä«¸Þ¶óÀÇ ºÎµå·¯¿î ÀÌµ¿À» À§ÇÑ º¯¼ö
+    public float smoothSpeed = 0.125f;  // Ä«ï¿½Þ¶ï¿½ï¿½ï¿½ ï¿½Îµå·¯ï¿½ï¿½ ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     private void LateUpdate()
     {
-        // ´ë»óÀÇ À§Ä¡¿¡ ¿ÀÇÁ¼ÂÀ» ´õÇÑ À§Ä¡ °è»ê
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½
         Vector3 desiredPosition = target.position + offset;
 
-        // ºÎµå·¯¿î ÀÌµ¿À» À§ÇØ Lerp ÇÔ¼ö »ç¿ë
+        // ï¿½Îµå·¯ï¿½ï¿½ ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Lerp ï¿½Ô¼ï¿½ ï¿½ï¿½ï¿½
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
 
-        // Ä«¸Þ¶óÀÇ À§Ä¡¸¦ ºÎµå·¯¿î ÀÌµ¿µÈ À§Ä¡·Î ¾÷µ¥ÀÌÆ®
+        // Ä«ï¿½Þ¶ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½Îµå·¯ï¿½ï¿½ ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
         transform.position = smoothedPosition;
 
-        // Ä«¸Þ¶ó°¡ ´ë»óÀ» ¹Ù¶óº¸µµ·Ï È¸Àü
+        // Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¶óº¸µï¿½ï¿½ï¿½ È¸ï¿½ï¿½
         transform.LookAt(target);
     }
 }

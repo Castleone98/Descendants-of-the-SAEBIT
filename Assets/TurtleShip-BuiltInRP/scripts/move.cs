@@ -7,12 +7,11 @@ using UnityEngine;
 public class move : MonoBehaviour
 {
     private Rigidbody rigid;
-
     public float hAxis;
     public float vAxis;
     private float speed = 5.0f;
-    private float jumpForce = 10.0f;
-    private float gravity = 9.8f;
+    private float jumpForce = 5.0f;
+    private float gravity = 15f;
     Vector3 moveVec;
     Animator anim;
     CharacterController controller;
@@ -48,27 +47,29 @@ public class move : MonoBehaviour
 
         //Jump();
 
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("Jump");
-            //¹Ù´Ú¿¡ ÀÖÀ¸¸é Á¡ÇÁ¸¦ ½ÇÇà
+            //ï¿½Ù´Ú¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             if (!IsJumping)
             {
                 Debug.Log("Jump2");
-                //print("Á¡ÇÁ °¡´É !");
+                //print("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ !");
                 //rigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                 //moveVec.y = jumpForce;
                 moveVec.y = jumpForce;
                 Debug.Log(moveVec.y);
                 transform.position += moveVec * speed * Time.deltaTime;
+                // rigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                 moveVec.y = 0;
 
             }
 
-            //°øÁß¿¡ ¶°ÀÖ´Â »óÅÂÀÌ¸é Á¡ÇÁÇÏÁö ¸øÇÏµµ·Ï ¸®ÅÏ
+            //ï¿½ï¿½ï¿½ß¿ï¿½ ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             else
             {
-                //print("Á¡ÇÁ ºÒ°¡´É !");
+                //print("ï¿½ï¿½ï¿½ï¿½ ï¿½Ò°ï¿½ï¿½ï¿½ !");
                 return;
             }
         }
@@ -78,23 +79,23 @@ public class move : MonoBehaviour
 
     void Jump()
     {
-        //½ºÆäÀÌ½º Å°¸¦ ´©¸£¸é Á¡ÇÁ
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("Jump");
-            //¹Ù´Ú¿¡ ÀÖÀ¸¸é Á¡ÇÁ¸¦ ½ÇÇà
+            //ï¿½Ù´Ú¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             if (!IsJumping)
             {
                 Debug.Log("Jump2");
-                //print("Á¡ÇÁ °¡´É !");
+                //print("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ !");
                 //rigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                 moveVec.y = jumpForce;
             }
 
-            //°øÁß¿¡ ¶°ÀÖ´Â »óÅÂÀÌ¸é Á¡ÇÁÇÏÁö ¸øÇÏµµ·Ï ¸®ÅÏ
+            //ï¿½ï¿½ï¿½ß¿ï¿½ ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             else
             {
-                //print("Á¡ÇÁ ºÒ°¡´É !");
+                //print("ï¿½ï¿½ï¿½ï¿½ ï¿½Ò°ï¿½ï¿½ï¿½ !");
                 return;
             }
         }
@@ -107,30 +108,30 @@ public class move : MonoBehaviour
 
     //private void Update()
     //{
-    //    // Å°º¸µå ÀÔ·ÂÀ» ¹Þ¾Æ Ä³¸¯ÅÍ ¿òÁ÷ÀÓ °è»ê
+    //    // Å°ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½Þ¾ï¿½ Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
     //    float horizontalInput = Input.GetAxis("Horizontal");
     //    float verticalInput = Input.GetAxis("Vertical");
 
     //    Vector3 moveDirection = new Vector3(horizontalInput, 0.0f, verticalInput);
     //    moveDirection.Normalize();
 
-    //    // Ä³¸¯ÅÍÀÇ À§Ä¡¸¦ ¿òÁ÷ÀÓ ¹æÇâ°ú ¼Óµµ¸¦ °öÇÑ °ªÀ¸·Î ¾÷µ¥ÀÌÆ®
+    //    // Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
     //    transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
 
-    //    //Ä³¸¯ÅÍÀÇ ¿òÁ÷ÀÓ ¹æÇâÀ» ¹Ù¶óº¸µµ·Ï È¸Àü
+    //    //Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¶óº¸µï¿½ï¿½ï¿½ È¸ï¿½ï¿½
     //    //if (moveDirection != Vector3.zero)
     //    //{
     //    //    Quaternion newRotation = Quaternion.LookRotation(moveDirection);
     //    //    transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * 10.0f);
     //    //}
 
-    //    // ÇöÀç Ä³¸¯ÅÍÀÇ È¸Àü°ªÀ» °¡Á®¿È
+    //    // ï¿½ï¿½ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     //    Quaternion currentRotation = transform.rotation;
 
-    //    // ºÏÂÊÀ» ³ªÅ¸³»´Â È¸Àü°ªÀ» °è»ê
-    //    Quaternion targetRotation = Quaternion.Euler(0, 0, 0); // (x, y, z) °¢µµ¸¦ ÁöÁ¤
+    //    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+    //    Quaternion targetRotation = Quaternion.Euler(0, 0, 0); // (x, y, z) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-    //    // È¸Àü°ªÀ» ºÎµå·´°Ô º¸°£ÇÏ¿© ¾÷µ¥ÀÌÆ®
+    //    // È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Îµå·´ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
     //    transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, Time.deltaTime * 5.0f);
     //}
 }
