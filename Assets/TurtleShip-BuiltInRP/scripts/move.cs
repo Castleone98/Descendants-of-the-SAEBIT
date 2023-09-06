@@ -8,13 +8,8 @@ public class move : MonoBehaviour
     public float hAxis;
     public float vAxis;
     private float speed = 5.0f;
-<<<<<<< Updated upstream
     private float jumpForce = 5.0f;
     private float gravity = 15f;
-=======
-    private float jumpForce = 100.0f;
-    private float gravity = 9.8f;
->>>>>>> Stashed changes
     Vector3 moveVec;
     Animator anim;
     CharacterController controller;
@@ -62,11 +57,7 @@ public class move : MonoBehaviour
                 moveVec.y = jumpForce;
                 Debug.Log(moveVec.y);
                 transform.position += moveVec * speed * Time.deltaTime;
-<<<<<<< Updated upstream
-                // rigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-=======
                 //rigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
->>>>>>> Stashed changes
                 moveVec.y = 0;
 
             }
