@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     public Camera otherCamera; // ��ȯ�� ī�޶�
 
     private bool isOtherCameraActive = false;
-    private bool main_character = false;
 
     private void Awake()
     {

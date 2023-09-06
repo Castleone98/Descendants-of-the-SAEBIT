@@ -31,11 +31,11 @@ public class CamController : MonoBehaviour
     void LateUpdate()
     {
         //  마우스 우클릭 중에만 카메라 무빙 적용
-        //if (Input.GetMouseButton(1))
-        //{
-        xmove += Input.GetAxis("Mouse X"); // 마우스의 좌우 이동량을 xmove 에 누적합니다.
-        ymove -= Input.GetAxis("Mouse Y"); // 마우스의 상하 이동량을 ymove 에 누적합니다.
-        //}
+        if (Input.GetMouseButton(1))
+        {
+            xmove += Input.GetAxis("Mouse X"); // 마우스의 좌우 이동량을 xmove 에 누적합니다.
+            ymove -= Input.GetAxis("Mouse Y"); // 마우스의 상하 이동량을 ymove 에 누적합니다.
+        }
         transform.rotation = Quaternion.Euler(ymove*5, xmove*5, 0); // 이동량에 따라 카메라의 바라보는 방향을 조정합니다.
 
         if (Input.GetMouseButtonDown(2))
