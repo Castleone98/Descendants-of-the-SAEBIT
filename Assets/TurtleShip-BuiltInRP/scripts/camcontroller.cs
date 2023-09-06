@@ -25,7 +25,7 @@ public class CamController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         //  마우스 우클릭 중에만 카메라 무빙 적용
         if (Input.GetMouseButton(1))

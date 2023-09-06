@@ -4,33 +4,55 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public Transform targetPosition; // ÀÌµ¿ÇÒ À§Ä¡
-    public Camera mainCamera; // ÇöÀç »ç¿ë ÁßÀÎ Ä«¸Þ¶ó
-    public Camera otherCamera; // ÀüÈ¯ÇÒ Ä«¸Þ¶ó
+    public Transform targetPosition; // ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
+    public GameObject target;
+    public move move_script;
+    public Camera mainCamera; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½
+    public Camera otherCamera; // ï¿½ï¿½È¯ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½
 
     private bool isOtherCameraActive = false;
+    private bool main_character = false;
+
+    private void Awake()
+    {
+        target.GetComponent<move>();
+    }
 
     void Update()
     {
-        // F Å°¸¦ ´­·¶À» ¶§ Ä«¸Þ¶ó ÀüÈ¯
+        // F Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½È¯
         if (Input.GetKeyDown(KeyCode.F))
         {
             SwitchCamera();
+
         }
     }
 
     void SwitchCamera()
     {
         isOtherCameraActive = !isOtherCameraActive;
+        
 
-        // ´Ù¸¥ Ä«¸Þ¶ó¸¦ È°¼ºÈ­ ¶Ç´Â ºñÈ°¼ºÈ­
+        // ï¿½Ù¸ï¿½ Ä«ï¿½Þ¶ï¿½ È°ï¿½ï¿½È­ ï¿½Ç´ï¿½ ï¿½ï¿½È°ï¿½ï¿½È­
         mainCamera.enabled = !isOtherCameraActive;
         otherCamera.enabled = isOtherCameraActive;
 
-        // Ä³¸¯ÅÍ À§Ä¡ ÀÌµ¿
+        if (isOtherCameraActive)
+        {
+            target.GetComponent<move>().enabled = true;
+            this.GetComponent<move>().enabled = false;
+        }
+        else
+        {
+            this.GetComponent<move>().enabled = true;
+            target.GetComponent<move>().enabled = false;
+
+        }
+
+        // Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½Ìµï¿½
         //if (isOtherCameraActive)
         //{
-        //    // ¿øÇÏ´Â À§Ä¡·Î ÀÌµ¿
+        //    // ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½Ìµï¿½
         //    transform.position = targetPosition.position;
         //    transform.rotation = targetPosition.rotation;
         //}

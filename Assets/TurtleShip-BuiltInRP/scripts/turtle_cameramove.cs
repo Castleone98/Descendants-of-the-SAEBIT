@@ -5,30 +5,30 @@ using UnityEngine;
 public class turtle_cameramove : MonoBehaviour
 {
 
-    public GameObject Target;               // Ä«¸Þ¶ó°¡ µû¶ó´Ù´Ò Å¸°Ù
+    public GameObject Target;               // Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ï¿½ï¿½Ù´ï¿½ Å¸ï¿½ï¿½
 
-    public float offsetX = 0.0f;            // Ä«¸Þ¶óÀÇ xÁÂÇ¥
-    public float offsetY = 10.0f;           // Ä«¸Þ¶óÀÇ yÁÂÇ¥
-    public float offsetZ = -10.0f;          // Ä«¸Þ¶óÀÇ zÁÂÇ¥
+    public float offsetX = 1.94f;            // Ä«ï¿½Þ¶ï¿½ï¿½ï¿½ xï¿½ï¿½Ç¥
+    public float offsetY = 63.0f;           // Ä«ï¿½Þ¶ï¿½ï¿½ï¿½ yï¿½ï¿½Ç¥
+    public float offsetZ = 75.0f;          // Ä«ï¿½Þ¶ï¿½ï¿½ï¿½ zï¿½ï¿½Ç¥
 
     public float angleX = 0.0f;
     public float angleY = 0.0f;
     public float angleZ = 0.0f;
 
-    public float CameraSpeed = 10.0f;       // Ä«¸Þ¶óÀÇ ¼Óµµ
-    Vector3 TargetPos;                      // Å¸°ÙÀÇ À§Ä¡
+    public float CameraSpeed = 10.0f;       // Ä«ï¿½Þ¶ï¿½ï¿½ï¿½ ï¿½Óµï¿½
+    Vector3 TargetPos;                      // Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        // Å¸°ÙÀÇ x, y, z ÁÂÇ¥¿¡ Ä«¸Þ¶óÀÇ ÁÂÇ¥¸¦ ´õÇÏ¿© Ä«¸Þ¶óÀÇ À§Ä¡¸¦ °áÁ¤
+        // Å¸ï¿½ï¿½ï¿½ï¿½ x, y, z ï¿½ï¿½Ç¥ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¿ï¿½ Ä«ï¿½Þ¶ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         TargetPos = new Vector3(
             Target.transform.position.x + offsetX,
             Target.transform.position.y + offsetY,
             Target.transform.position.z + offsetZ
             );
 
-        // Ä«¸Þ¶óÀÇ ¿òÁ÷ÀÓÀ» ºÎµå·´°Ô ÇÏ´Â ÇÔ¼ö(Lerp)
+        // Ä«ï¿½Þ¶ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Îµå·´ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½(Lerp)
         transform.position = Vector3.Lerp(transform.position, TargetPos, Time.deltaTime * CameraSpeed);
 
         transform.rotation = Quaternion.Euler(angleX, angleY, angleZ);
