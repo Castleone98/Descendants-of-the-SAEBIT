@@ -37,11 +37,14 @@ public class move : MonoBehaviour
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveVec), 0.3f);
         }
+
+        moveVec.y -= gravity * Time.deltaTime;
+
         controller.Move(moveVec * speed * Time.deltaTime);
         //transform.position += moveVec * speed * Time.deltaTime;
         //controller.SimpleMove(moveVec * speed);
 
-        moveVec.y -= gravity * Time.deltaTime;
+        
 
 
         if (Input.GetKeyDown(KeyCode.Space))
