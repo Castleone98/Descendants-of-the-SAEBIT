@@ -10,11 +10,12 @@ public class move : MonoBehaviour
     private float speed = 5.0f;
     private float jumpForce = 5.0f;
     private float gravity = 15f;
+    public float turnSpeed = 4.0f; // 마우스 회전 속도
+    private float xRotate = 0.0f; // 내부 사용할 X축 회전량은 별도 정의 ( 카메라 위 아래 방향 )
     Vector3 moveVec;
     Animator anim;
     CharacterController controller;
     private bool IsJumping = false;
-
     void Awake()
     {
         anim = GetComponentInChildren<Animator>();
@@ -74,7 +75,6 @@ public class move : MonoBehaviour
         }
 
     }
-
 
     void Jump()
     {

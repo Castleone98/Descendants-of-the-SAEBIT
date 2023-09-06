@@ -11,7 +11,7 @@ public class CamController : MonoBehaviour
 
     private Vector3 velocity = Vector3.zero;
 
-    private int toggleView = 3; // 1=1인칭, 3=3인칭
+    private int toggleView = 1; // 1=1인칭, 3=3인칭
 
     private float wheelspeed = 10.0f;
 
@@ -21,6 +21,7 @@ public class CamController : MonoBehaviour
     void Start()
     {
         Player_Height = new Vector3(0, 2f, 0f);
+
         Player_Side = new Vector3(0f, 0f, -1.0f);
         ymove = 5.0f;
         xmove = -1.0f;
