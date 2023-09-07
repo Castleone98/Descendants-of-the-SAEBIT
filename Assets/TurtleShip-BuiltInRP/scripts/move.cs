@@ -11,11 +11,12 @@ public class move : MonoBehaviour
     private float jumpForce = 5.0f;
     private float gravity = 15f;
     public float turnSpeed = 4.0f; // 마우스 회전 속도
-    private float xRotate = 0.0f; // 내부 사용할 X축 회전량은 별도 정의 ( 카메라 위 아래 방향 )
+    float mouseX = 0;
     Vector3 moveVec;
     Animator anim;
     CharacterController controller;
     private bool IsJumping = false;
+
     void Awake()
     {
         anim = GetComponentInChildren<Animator>();
@@ -31,6 +32,7 @@ public class move : MonoBehaviour
         moveVec = new Vector3(hAxis, 0, vAxis);
         moveVec = moveVec.normalized;
 
+
         float planarSpeed = new Vector2(hAxis, vAxis).sqrMagnitude;
         //anim.SetFloat("PlanarSpeed", planarSpeed);
 
@@ -42,96 +44,33 @@ public class move : MonoBehaviour
         moveVec.y -= gravity * Time.deltaTime;
 
         controller.Move(moveVec * speed * Time.deltaTime);
-        //transform.position += moveVec * speed * Time.deltaTime;
-        //controller.SimpleMove(moveVec * speed);
+        mouseX += Input.GetAxis("Mouse X") * 5;
+        transform.eulerAngles = new Vector3(0, mouseX, 0);
 
-        
+
 
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("Jump");
-            //�ٴڿ� ������ ������ ����
             if (!IsJumping)
             {
                 Debug.Log("Jump2");
-                //print("���� ���� !");
                 //rigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                 //moveVec.y = jumpForce;
                 moveVec.y = jumpForce;
                 Debug.Log(moveVec.y);
                 //transform.position += moveVec * speed * Time.deltaTime;
                 controller.Move(moveVec * speed * Time.deltaTime);
-                //rigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                 moveVec.y = 0;
-
             }
 
-            //���߿� ���ִ� �����̸� �������� ���ϵ��� ����
             else
             {
-                //print("���� �Ұ��� !");
                 return;
             }
         }
 
     }
-
-    void Jump()
-    {
-        //�����̽� Ű�� ������ ����
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("Jump");
-            //�ٴڿ� ������ ������ ����
-            if (!IsJumping)
-            {
-                Debug.Log("Jump2");
-                //print("���� ���� !");
-                //rigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-                moveVec.y = jumpForce;
-            }
-
-            //���߿� ���ִ� �����̸� �������� ���ϵ��� ����
-            else
-            {
-                //print("���� �Ұ��� !");
-                return;
-            }
-        }
-    }
-
-  
-
-
-    //public float moveSpeed = 5.0f;
-
-    //private void Update()
-    //{
-    //    // Ű���� �Է��� �޾� ĳ���� ������ ���
-    //    float horizontalInput = Input.GetAxis("Horizontal");
-    //    float verticalInput = Input.GetAxis("Vertical");
-
-    //    Vector3 moveDirection = new Vector3(horizontalInput, 0.0f, verticalInput);
-    //    moveDirection.Normalize();
-
-    //    // ĳ������ ��ġ�� ������ ����� �ӵ��� ���� ������ ������Ʈ
-    //    transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
-
-    //    //ĳ������ ������ ������ �ٶ󺸵��� ȸ��
-    //    //if (moveDirection != Vector3.zero)
-    //    //{
-    //    //    Quaternion newRotation = Quaternion.LookRotation(moveDirection);
-    //    //    transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * 10.0f);
-    //    //}
-
-    //    // ���� ĳ������ ȸ������ ������
-    //    Quaternion currentRotation = transform.rotation;
-
-    //    // ������ ��Ÿ���� ȸ������ ���
-    //    Quaternion targetRotation = Quaternion.Euler(0, 0, 0); // (x, y, z) ������ ����
-
-    //    // ȸ������ �ε巴�� �����Ͽ� ������Ʈ
-    //    transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, Time.deltaTime * 5.0f);
-    //}
 }
+  
