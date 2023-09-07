@@ -60,7 +60,8 @@ public class move : MonoBehaviour
                 //moveVec.y = jumpForce;
                 moveVec.y = jumpForce;
                 Debug.Log(moveVec.y);
-                transform.position += moveVec * speed * Time.deltaTime;
+                //transform.position += moveVec * speed * Time.deltaTime;
+                controller.Move(moveVec * speed * Time.deltaTime);
                 //rigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                 moveVec.y = 0;
 
