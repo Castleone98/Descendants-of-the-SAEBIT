@@ -45,7 +45,7 @@ public class CamController : MonoBehaviour
         //}
 
         xmove = Mathf.Clamp(xmove, -50, 80);
-        ymove = Mathf.Clamp(ymove, -50, 50);
+        ymove = Mathf.Clamp(ymove, -30, 30);
         transform.rotation = Quaternion.Euler(ymove, xmove, 0); // 이동량에 따라 카메라의 바라보는 방향을 조정합니다.
 
         if (Input.GetMouseButtonDown(2))

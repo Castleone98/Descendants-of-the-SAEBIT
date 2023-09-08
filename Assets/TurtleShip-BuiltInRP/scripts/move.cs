@@ -44,7 +44,10 @@ public class move : MonoBehaviour
         moveVec.y -= gravity * Time.deltaTime;
 
         controller.Move(moveVec * speed * Time.deltaTime);
-        mouseX += Input.GetAxis("Mouse X") * 5;
+        //controller.Move(Time.deltaTime * speed * transform.TransformDirKection(moveVec.normalized));
+        mouseX += Input.GetAxis("Mouse X") * 4;
+
+        mouseX = Mathf.Clamp(mouseX, -50, 80);
         transform.eulerAngles = new Vector3(0, mouseX, 0);
 
 
@@ -56,11 +59,11 @@ public class move : MonoBehaviour
             if (!IsJumping)
             {
                 Debug.Log("Jump2");
-                //rigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                
                 //moveVec.y = jumpForce;
                 moveVec.y = jumpForce;
                 Debug.Log(moveVec.y);
-                //transform.position += moveVec * speed * Time.deltaTime;
+                //rigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                 controller.Move(moveVec * speed * Time.deltaTime);
                 moveVec.y = 0;
             }
