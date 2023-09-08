@@ -44,7 +44,7 @@ public class CamController : MonoBehaviour
         ymove -= Input.GetAxis("Mouse Y") * 4; // 마우스의 상하 이동량을 ymove 에 누적합니다.
         //}
 
-        xmove = Mathf.Clamp(xmove, -50, 80);
+        //xmove = Mathf.Clamp(xmove, -100, 100);
         ymove = Mathf.Clamp(ymove, -30, 30);
         transform.rotation = Quaternion.Euler(ymove, xmove, 0); // 이동량에 따라 카메라의 바라보는 방향을 조정합니다.
 
