@@ -12,9 +12,15 @@ public class PlayerController : MonoBehaviour
 
     private bool isOtherCameraActive = false;
 
+    void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked; // 마우스를 중앙에 고정
+        Cursor.visible = false; // 마우스 커서 숨기기
+    }
     private void Awake()
     {
         target.GetComponent<move>();
+
     }
 
     void Update()

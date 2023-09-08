@@ -19,8 +19,7 @@ public class move : MonoBehaviour
 
     void Awake()
     {
-        Cursor.lockState = CursorLockMode.Locked; // 마우스를 중앙에 고정
-        Cursor.visible = false; // 마우스 커서 숨기기
+        
 
         anim = GetComponentInChildren<Animator>();
         controller = GetComponent<CharacterController>();
